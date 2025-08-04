@@ -3,9 +3,10 @@
   "version": "1.0.4",
   "description": "datas e estatisticas de das maiores casas de aposta",
   "main": "index.js",
-  "scripts": {
-    "test": "node test.js"
-  },
+"scripts": {
+  "start": "node index.js",
+  "test": "node test.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/victorratts13/radar-sport-api.git"
