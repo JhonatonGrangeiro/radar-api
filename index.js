@@ -5,14 +5,13 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 
-// ===== Configuração do Express =====
 const app = express();
 const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
 
-// Middleware de autenticação apenas para rotas protegidas
+// Middleware de autenticação (apenas para rotas protegidas)
 const authMiddleware = (req, res, next) => {
   const token = req.headers['x-api-key'];
   if (!token || token !== process.env.API_KEY) {
@@ -21,7 +20,7 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
-// ===== Classe sportApi =====
+// Configuração do Axios para a API externa
 const apiAxios = axios.create({
   baseURL: 'https://stats.fn.sportradar.com',
   Headers: {
@@ -55,10 +54,9 @@ class sportApi {
   }
 }
 
-// ===== Instância =====
 const api = new sportApi('https://s5.sir.sportradar.com');
 
-// ===== Rotas públicas =====
+// Rotas públicas
 app.get('/jogos', async (req, res) => {
   try {
     const sportId = req.query.id || '1234';
@@ -89,17 +87,16 @@ app.get('/odds', async (req, res) => {
   }
 });
 
-// ===== Rota protegida de exemplo =====
+// Exemplo de rota protegida
 app.get('/status', authMiddleware, (req, res) => {
   res.json({ status: 'API protegida online 🚀' });
 });
 
-// ===== Status geral =====
+// Status geral
 app.get('/', (req, res) => {
   res.json({ status: 'API online 🚀' });
 });
 
-// ===== Start =====
 app.listen(PORT, () => {
   console.log(`Servidor Express iniciado na porta ${PORT}`);
 });
