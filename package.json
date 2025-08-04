@@ -1,12 +1,12 @@
 {
   "name": "radar-sport-api",
   "version": "1.0.4",
-  "description": "datas e estatisticas de das maiores casas de aposta",
-  "main": "index.js",
-"scripts": {
-  "start": "node index.js",
-  "test": "node test.js"
-},
+  "description": "datas e estatísticas das maiores casas de aposta",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/victorratts13/radar-sport-api.git"
@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/victorratts13/radar-sport-api#readme",
   "dependencies": {
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "express": "^4.21.2"
   }
 }
