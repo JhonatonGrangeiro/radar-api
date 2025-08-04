@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('API Radar-Sport rodando com sucesso no Render!');
+  res.send('API Radar-Sport está no ar!');
 });
 
 app.listen(PORT, () => {
