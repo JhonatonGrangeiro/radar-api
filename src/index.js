@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
-// ===== Middleware de autenticação (para rotas protegidas) =====
+// Middleware de autenticação apenas para rotas protegidas
 const authMiddleware = (req, res, next) => {
   const token = req.headers['x-api-key'];
   if (!token || token !== process.env.API_KEY) {
@@ -61,7 +61,7 @@ const api = new sportApi('https://s5.sir.sportradar.com');
 // ===== Rotas públicas =====
 app.get('/jogos', async (req, res) => {
   try {
-    const sportId = req.query.id || '1234'; // pode passar ?id=xxxx na URL
+    const sportId = req.query.id || '1234';
     const data = await api.modalData(sportId, 'all');
     res.json(data);
   } catch (err) {
